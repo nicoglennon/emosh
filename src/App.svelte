@@ -74,12 +74,12 @@
   on:mousemove={e => coords.set({ x: e.clientX, y: e.clientY })}
   on:mousedown={() => {
     visible = true;
-    size.set(1000);
+    size.set(750);
   }}
   on:touchstart={e => {
     coords.set({ x: e.touches[0].clientX, y: e.touches[0].clientY });
     visible = true;
-    size.set(1000);
+    size.set(750);
   }}
   on:mouseup={() => {
     visible = false;
