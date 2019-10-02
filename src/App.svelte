@@ -1,48 +1,52 @@
 <script>
-  import { onMount } from "svelte";
-  export let date;
+  import { spring } from "svelte/motion";
 
-  onMount(async () => {
-    const res = await fetch("/api/date");
-    const newDate = await res.text();
-    date = newDate;
-  });
+  let coords = spring(
+    { x: 50, y: 50 },
+    {
+      stiffness: 0.1,
+      damping: 0.25
+    }
+  );
+
+  let size = spring(10);
 </script>
 
-<main>
-  <h1>Svelte + Node.js API</h1>
-  <h2>
-    Deployed with
-    <a href="https://zeit.co/docs" target="_blank" rel="noreferrer noopener">
-      ZEIT Now
-    </a>
-    !
-  </h2>
-  <p>
-    <a
-      href="https://github.com/zeit/now-examples/tree/master/svelte-functions"
-      target="_blank"
-      rel="noreferrer noopener">
-      This project
-    </a>
-    is a
-    <a href="https://svelte.dev/">Svelte</a>
-    app with three directories,
-    <code>/public</code>
-    for static assets,
-    <code>/src</code>
-    for components and content, and
-    <code>/api</code>
-    which contains a serverless
-    <a href="https://nodejs.org/en/">Node.js</a>
-    function. See
-    <a href="/api/date">
-      <code>api/date</code>
-      for the Date API with Node.js
-    </a>
-    .
-  </p>
-  <br />
-  <h2>The date according to Node.js is:</h2>
-  <p>{date ? date : 'Loading date...'}</p>
-</main>
+<style>
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+  circle {
+    fill: #ff3e00;
+  }
+</style>
+
+<div style="position: absolute; right: 1em;">
+  <label>
+    <h3>stiffness ({coords.stiffness})</h3>
+    <input
+      bind:value={coords.stiffness}
+      type="range"
+      min="0"
+      max="1"
+      step="0.01" />
+  </label>
+
+  <label>
+    <h3>damping ({coords.damping})</h3>
+    <input
+      bind:value={coords.damping}
+      type="range"
+      min="0"
+      max="1"
+      step="0.01" />
+  </label>
+</div>
+
+<svg
+  on:mousemove={e => coords.set({ x: e.clientX, y: e.clientY })}
+  on:mousedown={() => size.set(30)}
+  on:mouseup={() => size.set(10)}>
+  <circle cx={$coords.x} cy={$coords.y} r={$size} />
+</svg>
