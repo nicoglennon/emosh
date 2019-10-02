@@ -95,16 +95,23 @@
       <text
         class="title"
         x="50%"
-        y="47%"
+        y="44%"
         dominant-baseline="middle"
         text-anchor="middle"
         fill="white">
         emosh
       </text>
       <text
-        class="subtitle"
         x="50%"
-        y="52%"
+        y="50%"
+        dominant-baseline="middle"
+        text-anchor="middle"
+        fill="white">
+        ♥
+      </text>
+      <text
+        x="50%"
+        y="54%"
         dominant-baseline="middle"
         text-anchor="middle"
         fill="white">
