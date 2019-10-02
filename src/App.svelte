@@ -4,12 +4,12 @@
   let coords = spring(
     { x: 50, y: 50 },
     {
-      stiffness: 0.1,
-      damping: 0.25
+      stiffness: 0.05,
+      damping: 0.1
     }
   );
 
-  let size = spring(10);
+  let size = spring(100);
 </script>
 
 <style>
