@@ -9,7 +9,7 @@
     }
   );
 
-  let size = spring(100);
+  let size = spring(20);
 </script>
 
 <style>
@@ -46,7 +46,7 @@
 
 <svg
   on:mousemove={e => coords.set({ x: e.clientX, y: e.clientY })}
-  on:mousedown={() => size.set(30)}
-  on:mouseup={() => size.set(10)}>
+  on:mousedown={() => size.set(500)}
+  on:mouseup={() => size.set(20)}>
   <circle cx={$coords.x} cy={$coords.y} r={$size} />
 </svg>
