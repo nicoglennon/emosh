@@ -25,37 +25,37 @@
 
   @keyframes colorchange {
     0% {
-      fill: red;
+      fill: #ff7675;
     }
     25% {
-      fill: yellow;
+      fill: #fdcb6e;
     }
     50% {
-      fill: blue;
+      fill: #55efc4;
     }
     75% {
-      fill: green;
+      fill: #a29bfe;
     }
     100% {
-      fill: red;
+      fill: #fd79a8;
     }
   }
 
   @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */ {
     0% {
-      background: red;
+      fill: #ff7675;
     }
     25% {
-      background: yellow;
+      fill: #fdcb6e;
     }
     50% {
-      background: blue;
+      fill: #55efc4;
     }
     75% {
-      background: green;
+      fill: #a29bfe;
     }
     100% {
-      background: red;
+      fill: #fd79a8;
     }
   }
 </style>
