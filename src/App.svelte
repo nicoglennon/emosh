@@ -73,10 +73,20 @@
 <svg
   on:mousemove={e => coords.set({ x: e.clientX, y: e.clientY })}
   on:mousedown={() => {
+    console.log('click');
+    visible = true;
+    size.set(1000);
+  }}
+  on:touchstart={() => {
+    console.log('touch');
     visible = true;
     size.set(1000);
   }}
   on:mouseup={() => {
+    visible = false;
+    size.set(25);
+  }}
+  on:touchend={() => {
     visible = false;
     size.set(25);
   }}>
