@@ -1,5 +1,6 @@
 <script>
   import { spring } from "svelte/motion";
+  import { fade } from "svelte/transition";
 
   let coords = spring(
     { x: 50, y: 50 },
@@ -10,12 +11,21 @@
   );
 
   let size = spring(25);
+  let visible = false;
 </script>
 
 <style>
   svg {
     width: 100%;
     height: 100%;
+  }
+  text {
+    font-family: "Caveat", cursive;
+    user-select: none;
+    font-size: 30px;
+  }
+  text.title {
+    font-size: 64px;
   }
   circle {
     animation: colorchange 10s infinite; /* animation-name followed by duration in seconds*/
@@ -62,7 +72,36 @@
 
 <svg
   on:mousemove={e => coords.set({ x: e.clientX, y: e.clientY })}
-  on:mousedown={() => size.set(1000)}
-  on:mouseup={() => size.set(25)}>
+  on:mousedown={() => {
+    visible = true;
+    size.set(1000);
+  }}
+  on:mouseup={() => {
+    visible = false;
+    size.set(25);
+  }}>
   <circle cx={$coords.x} cy={$coords.y} r={$size} />
+  {#if visible}
+    <g transition:fade>
+      <text
+        class="title"
+        x="50%"
+        y="47%"
+        dominant-baseline="middle"
+        text-anchor="middle"
+        fill="white">
+        emosh
+      </text>
+      <text
+        class="subtitle"
+        x="50%"
+        y="52%"
+        dominant-baseline="middle"
+        text-anchor="middle"
+        fill="white">
+        coming soon(ish)
+      </text>
+    </g>
+  {/if}
+
 </svg>
